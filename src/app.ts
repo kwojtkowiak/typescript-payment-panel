@@ -1,20 +1,7 @@
 import { Invoice } from './classes/Invoice.js'
 import { Payment } from './classes/Payment.js'
+import { ListTemplate } from './classes/listTemplate.js'
 import { HasFormatter } from './interfaces/HasFormatter.js'
-
-interface IsPerson {
-  name: string
-  age: number
-}
-const invOne = new Invoice('mario', 'work', 300)
-const invTwo = new Invoice('luigi', 'work2', 200)
-
-let invoices: Invoice[] = []
-invoices.push(invOne)
-invoices.push(invTwo)
-invoices.forEach((inv) => {
-  console.log(inv.client, inv.amount, inv.format())
-})
 
 const anchor = document.querySelector('a')! /*! to tell ts that it IS there*/
 
@@ -25,13 +12,23 @@ const type = document.querySelector(
 const tofrom = document.querySelector('#tofrom') as HTMLInputElement
 const details = document.querySelector('#details') as HTMLInputElement
 const amount = document.querySelector('#amount') as HTMLInputElement
+const position = document.querySelector('#position') as HTMLSelectElement
+const positionValue = position.value as 'start' | 'end'
+
+const ul = document.querySelector('ul')!
+const list = new ListTemplate(ul)
 
 form.addEventListener('submit', (e: Event) => {
   e.preventDefault()
 
   let doc: HasFormatter
-  doc =
-    type.value === 'invoice'
-      ? new Invoice(tofrom.value, details.value, amount.valueAsNumber)
-      : new Payment(tofrom.value, details.value, amount.valueAsNumber)
+
+  if (positionValue === 'start' || positionValue === 'end') {
+    doc =
+      type.value === 'invoice'
+        ? new Invoice(tofrom.value, details.value, amount.valueAsNumber, positionValue)
+        : new Payment(tofrom.value, details.value, amount.valueAsNumber, positionValue)
+
+    list.render(doc, type.value, positionValue)
+  }
 })

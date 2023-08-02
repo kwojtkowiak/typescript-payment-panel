@@ -18,22 +18,29 @@
       <form class="new-item-form">
         <div class="field">
           <label>Rodzaj:</label>
-          <select id="type">
+          <select id="type" required>
             <option value="invoice">Faktura</option>
             <option value="payment">Opłata</option>
           </select>
         </div>
         <div class="field">
           <label>Od / Do:</label>
-          <input type="text" id="tofrom" />
+          <input type="text" id="tofrom" required />
         </div>
         <div class="field">
           <label>Szczegóły:</label>
-          <input type="text" id="details" />
+          <input type="text" id="details" required />
         </div>
         <div class="field">
           <label>Kwota (PLN):</label>
-          <input type="number" id="amount" />
+          <input type="number" id="amount" required />
+        </div>
+        <div class="field">
+          <label>Pozycja wpisu (początek/koniec):</label>
+          <select id="position" required>
+            <option value="start">początek</option>
+            <option value="end">koniec</option>
+          </select>
         </div>
         <button>Dodaj</button>
       </form>
