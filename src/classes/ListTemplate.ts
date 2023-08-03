@@ -7,7 +7,7 @@ export class ListTemplate {
     const h4 = document.createElement('h4')
     const p = document.createElement('p')
 
-    h4.innerText = heading
+    h4.innerText = heading === 'invoice' ? 'Faktura' : 'Opłata'
     li.append(h4)
     p.innerText = item.format()
     li.append(p)
