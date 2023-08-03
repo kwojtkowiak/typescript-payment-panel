@@ -1,6 +1,7 @@
 import { Invoice } from './classes/Invoice.js';
 import { Payment } from './classes/Payment.js';
 import { ListTemplate } from './classes/ListTemplate.js';
+
 const anchor = document.querySelector('a'); /*! to tell ts that it IS there*/
 const form = document.querySelector('.new-item-form');
 const type = document.querySelector('#type'); /*it allows to use specific methods, as TS does not know whether this ID belongs to form/button/div etc*/
