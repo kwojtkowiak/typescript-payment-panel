@@ -19,8 +19,8 @@ const list = new ListTemplate(ul)
 
 form.addEventListener('submit', (e: Event) => {
   e.preventDefault()
-const positionValue = position.value as 'start' | 'end'
-  
+  const positionValue = position.value as 'start' | 'end'
+
   const detailsValue = details.value.trim() || 'nie podano szczegółów!'
 
   let values: [string, string, number, string]
